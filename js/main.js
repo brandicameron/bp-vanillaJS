@@ -96,8 +96,6 @@ function raiseLowerControls() {
 control.addEventListener('click', raiseLowerControls);
 saveBtn.addEventListener('click', addNewBPReading);
 
-//only displays last one, of course
-displayReadings(readings, readingsUl, readings[readings.length - 1]);
 
 readings.forEach(function(item, i) {
 	displayReadings(readings, readingsUl, readings[i]);
@@ -107,4 +105,10 @@ readings.forEach(function(item, i) {
 
 //TO DO
 
+// Add if statement so that if the array is empty onload, there no line and no console error message
+
+// It also adds the most recent reading twice UGH
+
 // Check on adding new items...do they get added to the bottom? Do they get displayed correctly on refresh?? Who knows?????  
+
+// Make it where after typing in the 3 readings under systolic, it will auto advance to the next field ... on so on....
