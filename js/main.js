@@ -62,7 +62,7 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 	pulseReading.textContent = item.pulse;
 	let heartImg = document.createElement('img');
 	heartImg.className = 'heart';
-	heartImg.src = "../img/heart.svg";
+	heartImg.src = "./img/heart.svg";
 	pulseReading.appendChild(heartImg);
 	readingContainer.appendChild(pulseReading);
 
