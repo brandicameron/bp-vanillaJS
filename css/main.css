@@ -43,8 +43,9 @@ header {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 20px;
-	height: 60vh;
+/*	height: 60vh;*/
 	overflow-y: scroll;
+	border: 2px solid green;
 }
 
 .readings > li {

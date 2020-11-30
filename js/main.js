@@ -94,7 +94,7 @@ function raiseLowerControls() {
 control.addEventListener('click', raiseLowerControls);
 saveBtn.addEventListener('click', addNewBPReading);
 
-displayReadings(readings, readingsUl, readings[1]);
+//displayReadings(readings, readingsUl, readings[1]);
 
 
 
