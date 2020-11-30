@@ -36,7 +36,7 @@ function addNewBPReading(e) {
 	};
 
 	readings.push(reading);
-	displayReadings(readings, readingsUl, readings[readings.length-1]);
+	displayReadings(readings, readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
 	raiseLowerControls();
 }
@@ -45,10 +45,11 @@ function addNewBPReading(e) {
 
 function displayReadings(pickArray = [], pickUlElement, item) {
 
+
 	let li = document.createElement('li');
 	pickUlElement.appendChild(li);
 
-		let readingContainer = document.createElement('div');
+	let readingContainer = document.createElement('div');
 	readingContainer.className = 'reading-container';
 	li.appendChild(readingContainer);
 
@@ -70,7 +71,8 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 	date.className = 'date';
 	date.textContent = `${item.date.month} ${item.date.day}, ${item.date.year} @ ${item.date.time}`;
 	li.appendChild(date);
-	
+
+
 	bpColorRating(item.systolic, item.diastolic, bpReading);
 	document.querySelector('form').reset();
 }
@@ -94,13 +96,15 @@ function raiseLowerControls() {
 control.addEventListener('click', raiseLowerControls);
 saveBtn.addEventListener('click', addNewBPReading);
 
-//displayReadings(readings, readingsUl, readings[1]);
+//only displays last one, of course
+displayReadings(readings, readingsUl, readings[readings.length - 1]);
 
-
-
+readings.forEach(function(item, i) {
+	displayReadings(readings, readingsUl, readings[i]);
+});
 
 
 
 //TO DO
 
-// Of course add to local storage
+// Check on adding new items...do they get added to the bottom? Do they get displayed correctly on refresh?? Who knows?????  
