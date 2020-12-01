@@ -28,7 +28,6 @@ function addNewBPReading(e) {
 		hour12: true
 	});
 
-
 	let reading = {
 		systolic: systolicInput.value,
 		diastolic: diastolicInput.value,
@@ -41,8 +40,6 @@ function addNewBPReading(e) {
 		},
 		id: newID
 	};
-
-
 	readings.push(reading);
 	displayReadings(readings, readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
@@ -51,7 +48,6 @@ function addNewBPReading(e) {
 
 
 function displayReadings(pickArray = [], pickUlElement, item) {
-
 
 	let li = document.createElement('li');
 	li.setAttribute('id', item.id);
@@ -76,7 +72,7 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 	readingContainer.appendChild(pulseReading);
 
 	let deleteBtn = document.createElement('img');
-	deleteBtn.src = "../img/trash-can.svg";
+	deleteBtn.src = "./img/trash-can.svg";
 	deleteBtn.className = 'delete-btn';
 	readingContainer.appendChild(deleteBtn);
 
@@ -100,11 +96,11 @@ function bpColorRating(systolic, diastolic, display) {
 }
 
 
-
 function raiseLowerControls() {
 	let form = document.querySelector('form');
 	let active = (form.classList.contains('active')) ? form.classList.remove('active') : form.classList.add('active');
 }
+
 
 function autoTab(current, to) {
 	if (current.value.length === current.maxLength) {
@@ -112,13 +108,12 @@ function autoTab(current, to) {
 	}
 }
 
+
 function deleteReading(e) {
 	if (e.target.classList.contains('delete-btn')) {
-
 		//delete from UI
 		let li = e.target.parentElement.parentElement;
 		readingsUl.removeChild(li);
-
 		//delete from array
 		let theArrayIndex = readings.findIndex(reading => reading.id === parseInt(e.target.parentElement.parentElement.id));
 		readings.splice(theArrayIndex, 1);
