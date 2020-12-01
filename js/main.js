@@ -3,7 +3,6 @@ const control = document.querySelector('.control-bar');
 let readings = JSON.parse(localStorage.getItem('readings')) || [];
 const readingsUl = document.querySelector('.readings'); //the Ul
 
-
 function addNewBPReading(e) {
 	e.preventDefault();
 
@@ -92,23 +91,17 @@ function raiseLowerControls() {
 	let active = (form.classList.contains('active')) ? form.classList.remove('active') : form.classList.add('active');
 }
 
+function autoTab(current, to) {
+	if (current.value.length === current.maxLength) {
+		to.focus();
+	}
+}
+
 
 control.addEventListener('click', raiseLowerControls);
 saveBtn.addEventListener('click', addNewBPReading);
 
-
-readings.forEach(function(item, i) {
+// populate local storage readings
+readings.forEach(function (item, i) {
 	displayReadings(readings, readingsUl, readings[i]);
 });
-
-
-
-//TO DO
-
-// Add if statement so that if the array is empty onload, there no line and no console error message
-
-// It also adds the most recent reading twice UGH
-
-// Check on adding new items...do they get added to the bottom? Do they get displayed correctly on refresh?? Who knows?????  
-
-// Make it where after typing in the 3 readings under systolic, it will auto advance to the next field ... on so on....

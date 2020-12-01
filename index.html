@@ -40,12 +40,12 @@
 		<div class="reading-inputs">
 			<div class="input-group">
 				<label for="systolic">Systolic</label>
-				<input type="tel" name="systolic" autofocus>
+				<input type="tel" name="systolic" maxlength="3" autofocus oninput="autoTab(this, dia)">
 			</div>
 			<div class="slash">/</div>
 			<div class="input-group">
 				<label for="diastolic">Diastolic</label>
-				<input type="tel" name="diastolic">
+				<input type="tel" id="dia" name="diastolic" maxlength="2" oninput="autoTab(this, pulse)">
 			</div>
 			<div class="input-group pulse-group">
 				<label for="pulse">Pulse</label>

@@ -53,6 +53,7 @@ header {
 	align-items: center;
 	margin-top: 20px;
 	overflow-y: scroll;
+	padding-bottom: 50px;
 }
 
 .readings > li {
