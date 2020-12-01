@@ -99,6 +99,7 @@ function bpColorRating(systolic, diastolic, display) {
 function raiseLowerControls() {
 	let form = document.querySelector('form');
 	let active = (form.classList.contains('active')) ? form.classList.remove('active') : form.classList.add('active');
+	document.querySelector('[name=systolic]').focus();
 }
 
 
