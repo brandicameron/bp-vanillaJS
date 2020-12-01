@@ -3,9 +3,16 @@ const control = document.querySelector('.control-bar');
 let readings = JSON.parse(localStorage.getItem('readings')) || [];
 const readingsUl = document.querySelector('.readings'); //the Ul
 
+// populate local storage readings
+readings.forEach(function (item, i) {
+	displayReadings(readings, readingsUl, readings[i]);
+});
+
+
 function addNewBPReading(e) {
 	e.preventDefault();
 
+	let newID = Date.now();
 	const systolicInput = document.querySelector('[name=systolic]');
 	const diastolicInput = document.querySelector('[name=diastolic]');
 	const pulse = document.querySelector('[name=pulse]');
@@ -31,8 +38,10 @@ function addNewBPReading(e) {
 			day: day,
 			year: year,
 			time: time
-		}
+		},
+		id: newID
 	};
+
 
 	readings.push(reading);
 	displayReadings(readings, readingsUl, readings[readings.length - 1]);
@@ -41,11 +50,11 @@ function addNewBPReading(e) {
 }
 
 
-
 function displayReadings(pickArray = [], pickUlElement, item) {
 
 
 	let li = document.createElement('li');
+	li.setAttribute('id', item.id);
 	pickUlElement.appendChild(li);
 
 	let readingContainer = document.createElement('div');
@@ -65,6 +74,11 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 	heartImg.src = "./img/heart.svg";
 	pulseReading.appendChild(heartImg);
 	readingContainer.appendChild(pulseReading);
+
+	let deleteBtn = document.createElement('img');
+	deleteBtn.src = "../img/trash-can.svg";
+	deleteBtn.className = 'delete-btn';
+	readingContainer.appendChild(deleteBtn);
 
 	let date = document.createElement('div');
 	date.className = 'date';
@@ -86,6 +100,7 @@ function bpColorRating(systolic, diastolic, display) {
 }
 
 
+
 function raiseLowerControls() {
 	let form = document.querySelector('form');
 	let active = (form.classList.contains('active')) ? form.classList.remove('active') : form.classList.add('active');
@@ -97,11 +112,23 @@ function autoTab(current, to) {
 	}
 }
 
+function deleteReading(e) {
+	if (e.target.classList.contains('delete-btn')) {
+
+		//delete from UI
+		let li = e.target.parentElement.parentElement;
+		readingsUl.removeChild(li);
+
+		//delete from array
+		let theArrayIndex = readings.findIndex(reading => reading.id === parseInt(e.target.parentElement.parentElement.id));
+		readings.splice(theArrayIndex, 1);
+		localStorage.setItem('readings', JSON.stringify(readings));
+		console.log(readings);
+	}
+}
+
+
 
 control.addEventListener('click', raiseLowerControls);
 saveBtn.addEventListener('click', addNewBPReading);
-
-// populate local storage readings
-readings.forEach(function (item, i) {
-	displayReadings(readings, readingsUl, readings[i]);
-});
+readingsUl.addEventListener('click', deleteReading);

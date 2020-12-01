@@ -62,14 +62,39 @@ header {
 	max-width: 400px;
 	padding: 25px 10px;
 	border-bottom: 1px solid var(--divider-color);
+	overflow: hidden;
 }
 
 .reading-container {
 	display: flex;
+	position: relative;
 	justify-content: space-between;
 	font-size: 2.2rem;
 	padding-bottom: 3px;
+	width: 150%;
+	transition: all 150ms linear;
 }
+
+.reading-container:hover {
+	margin-left: -50%;
+}
+
+.delete-btn {
+	width: 30px;
+	height: 30px;
+	margin-top: 8px;
+	cursor: pointer;
+}
+
+.delete-btn:focus {
+	outline: none;
+}
+
+.delete-btn:hover {
+	content: url(../img/trash-can-hover.svg);
+	filter: brightness(1.1);
+}
+
 
 .pulse {
 	position: relative;
@@ -145,6 +170,7 @@ form.active {
 	flex-direction: column;
 	align-items: center;
 }
+
 
 .slash {
 	position: relative;
