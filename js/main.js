@@ -1,5 +1,3 @@
-gsap.registerPlugin(Draggable, InertiaPlugin, CSSPlugin);
-
 const saveBtn = document.getElementById('saveBtn');
 const control = document.querySelector('.control-bar');
 let readings = JSON.parse(localStorage.getItem('readings')) || [];
@@ -48,6 +46,14 @@ function addNewBPReading(e) {
 	document.querySelector('form').reset();
 	raiseLowerForm();
 }
+
+
+function autoTab(current, to) {
+	if (current.value.length === current.maxLength) {
+		to.focus();
+	}
+}
+
 
 function displayReadings(pickArray = [], pickUlElement, item) {
 	let li = document.createElement('li');
@@ -121,42 +127,6 @@ if (readings.length === 0) {
 		control.textContent = "−";
 	}
 
-
-function autoTab(current, to) {
-	if (current.value.length === current.maxLength) {
-		to.focus();
-	}
-}
-
 control.addEventListener('click', raiseLowerForm);
 saveBtn.addEventListener('click', addNewBPReading);
 readingsUl.addEventListener('click', deleteReading);
-
-
-
-
-Draggable.create(".reading-container", {
-	type: "x",
-	bounds: document.getElementsByTagName('li'),
-	inertia: true,
-	duration: .05,
-	liveSnap: {
-		points: [{x: -110}],
-		radius: 110
-	}
-
-//	liveSnap: {
-//		x: [-120]
-//	},
-});
-
-
-
-
-
-
-
-
-
-
-
