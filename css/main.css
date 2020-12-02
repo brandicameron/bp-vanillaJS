@@ -73,8 +73,8 @@ header {
 
 .readings > li {
 	list-style: none;
-	width: 65vw;
-	max-width: 400px;
+	width: 70vw;
+	max-width: 270px;
 	padding: 25px 0;
 	border-bottom: 1px solid var(--divider-color);
 	overflow: hidden;
