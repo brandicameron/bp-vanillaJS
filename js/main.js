@@ -45,6 +45,7 @@ function addNewBPReading(e) {
 	localStorage.setItem('readings', JSON.stringify(readings));
 	document.querySelector('form').reset();
 	raiseLowerForm();
+	// So the keyboard on mobile will go away after submitting
 	systolicInput.blur();
 }
 
@@ -121,11 +122,11 @@ function autoTab(current, to) {
 	}
 }
 
-// make form active on load if there are no readings
+// makes form active on load if there are no readings
 if (readings.length === 0) {
-		document.querySelector('form').classList.add('active');
-		control.textContent = "−";
-	}
+	document.querySelector('form').classList.add('active');
+	control.textContent = "−";
+}
 
 control.addEventListener('click', raiseLowerForm);
 saveBtn.addEventListener('click', addNewBPReading);
