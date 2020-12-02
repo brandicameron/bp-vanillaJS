@@ -44,6 +44,7 @@ function addNewBPReading(e) {
 	displayReadings(readings, readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
 	document.querySelector('form').reset();
+	systolicInput.blur();
 	raiseLowerForm();
 }
 
