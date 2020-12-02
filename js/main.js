@@ -44,7 +44,6 @@ function addNewBPReading(e) {
 	displayReadings(readings, readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
 	document.querySelector('form').reset();
-	pulse.blur();
 	raiseLowerForm();
 }
 
@@ -114,6 +113,7 @@ function deleteReading(e) {
 	}
 }
 
+// function called in html
 function autoTab(current, to) {
 	if (current.value.length === current.maxLength) {
 		to.focus();
@@ -121,10 +121,10 @@ function autoTab(current, to) {
 }
 
 // make form active on load if there are no readings
-//if (readings.length === 0) {
-//		document.querySelector('form').classList.add('active');
-//		control.textContent = "−";
-//	}
+if (readings.length === 0) {
+		document.querySelector('form').classList.add('active');
+		control.textContent = "−";
+	}
 
 control.addEventListener('click', raiseLowerForm);
 saveBtn.addEventListener('click', addNewBPReading);
