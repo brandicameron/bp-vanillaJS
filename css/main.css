@@ -6,10 +6,10 @@
 
 :root {
 	--accent-color: #b40033;
-	--text-color: #5e5e5e;
-	--sm-text-color: #a9a8a8;
-	--divider-color: #d9d9d9;
 	--elevated: #ee8e05;
+	--text-color: #5e5e5e;
+	--sm-text-color: #adadad;
+	--divider-color: #d9d9d9;
 }
 
 body {
@@ -36,14 +36,29 @@ header {
 	background-image: url("../img/heart-banner.svg");
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 100px;
 	width: 100vw;
-	height: 100px;
+	height: 120px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #fff;
 	font-size: 3rem;
 	font-weight: 300;
+	animation: heartbeat .55s ease forwards .7s;
+}
+
+@keyframes heartbeat {
+
+	25%,
+	75% {
+		background-size: 90px;
+	}
+
+	50%,
+	100% {
+		background-size: 100px;
+	}
 }
 
 .readings {
@@ -58,9 +73,9 @@ header {
 
 .readings > li {
 	list-style: none;
-	width: 75vw;
+	width: 65vw;
 	max-width: 400px;
-	padding: 25px 10px;
+	padding: 25px 0;
 	border-bottom: 1px solid var(--divider-color);
 	overflow: hidden;
 }
@@ -71,13 +86,15 @@ header {
 	justify-content: space-between;
 	font-size: 2.2rem;
 	padding-bottom: 3px;
-	width: 150%;
+	width: 140%;
 	transition: all 150ms linear;
 }
 
+/*
 .reading-container:hover {
 	margin-left: -50%;
 }
+*/
 
 .delete-btn {
 	width: 30px;

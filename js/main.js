@@ -1,9 +1,11 @@
+gsap.registerPlugin(Draggable, InertiaPlugin, CSSPlugin);
+
 const saveBtn = document.getElementById('saveBtn');
 const control = document.querySelector('.control-bar');
 let readings = JSON.parse(localStorage.getItem('readings')) || [];
 const readingsUl = document.querySelector('.readings'); //the Ul
 
-// populate local storage readings
+// display local storage readings
 readings.forEach(function (item, i) {
 	displayReadings(readings, readingsUl, readings[i]);
 });
@@ -32,23 +34,30 @@ function addNewBPReading(e) {
 		systolic: systolicInput.value,
 		diastolic: diastolicInput.value,
 		pulse: pulse.value,
+		id: newID,
 		date: {
 			month: month,
 			day: day,
 			year: year,
 			time: time
 		},
-		id: newID
 	};
 	readings.push(reading);
 	displayReadings(readings, readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
-	raiseLowerControls();
+	document.querySelector('form').reset();
+	raiseLowerForm();
+}
+
+
+function autoTab(current, to) {
+	if (current.value.length === current.maxLength) {
+		to.focus();
+	}
 }
 
 
 function displayReadings(pickArray = [], pickUlElement, item) {
-
 	let li = document.createElement('li');
 	li.setAttribute('id', item.id);
 	pickUlElement.appendChild(li);
@@ -81,9 +90,7 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 	date.textContent = `${item.date.month} ${item.date.day}, ${item.date.year} @ ${item.date.time}`;
 	li.appendChild(date);
 
-
 	bpColorRating(item.systolic, item.diastolic, bpReading);
-	document.querySelector('form').reset();
 }
 
 
@@ -96,17 +103,11 @@ function bpColorRating(systolic, diastolic, display) {
 }
 
 
-function raiseLowerControls() {
+function raiseLowerForm() {
 	let form = document.querySelector('form');
-	let active = (form.classList.contains('active')) ? form.classList.remove('active') : form.classList.add('active');
+	form.classList.contains('active') ? form.classList.remove('active') : form.classList.add('active');
+	form.classList.contains('active') ? control.textContent = "−" : control.textContent = "+";
 	document.querySelector('[name=systolic]').focus();
-}
-
-
-function autoTab(current, to) {
-	if (current.value.length === current.maxLength) {
-		to.focus();
-	}
 }
 
 
@@ -119,12 +120,34 @@ function deleteReading(e) {
 		let theArrayIndex = readings.findIndex(reading => reading.id === parseInt(e.target.parentElement.parentElement.id));
 		readings.splice(theArrayIndex, 1);
 		localStorage.setItem('readings', JSON.stringify(readings));
-		console.log(readings);
 	}
 }
 
+// make form active on load if there are no readings
+if (readings.length === 0) {
+		document.querySelector('form').classList.add('active');
+		control.textContent = "−";
+	}
 
-
-control.addEventListener('click', raiseLowerControls);
+control.addEventListener('click', raiseLowerForm);
 saveBtn.addEventListener('click', addNewBPReading);
 readingsUl.addEventListener('click', deleteReading);
+
+
+
+
+Draggable.create(".reading-container", {
+	type: "x",
+	bounds: document.getElementsByTagName('li'),
+});
+
+
+
+
+
+
+
+
+
+
+
