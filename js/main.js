@@ -47,14 +47,6 @@ function addNewBPReading(e) {
 	raiseLowerForm();
 }
 
-
-function autoTab(current, to) {
-	if (current.value.length === current.maxLength) {
-		to.focus();
-	}
-}
-
-
 function displayReadings(pickArray = [], pickUlElement, item) {
 	let li = document.createElement('li');
 	li.setAttribute('id', item.id);
@@ -121,11 +113,17 @@ function deleteReading(e) {
 	}
 }
 
-// make form active on load if there are no readings
-if (readings.length === 0) {
-		document.querySelector('form').classList.add('active');
-		control.textContent = "−";
+function autoTab(current, to) {
+	if (current.value.length === current.maxLength) {
+		to.focus();
 	}
+}
+
+// make form active on load if there are no readings
+//if (readings.length === 0) {
+//		document.querySelector('form').classList.add('active');
+//		control.textContent = "−";
+//	}
 
 control.addEventListener('click', raiseLowerForm);
 saveBtn.addEventListener('click', addNewBPReading);
