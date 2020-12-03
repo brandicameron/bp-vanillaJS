@@ -1,18 +1,18 @@
 const saveBtn = document.getElementById('saveBtn');
 const control = document.querySelector('.control-bar');
 let readings = JSON.parse(localStorage.getItem('readings')) || [];
-const readingsUl = document.querySelector('.readings'); //the Ul
+const readingsUl = document.querySelector('.readings');
 
 // display local storage readings
 readings.forEach(function (item, i) {
-	displayReadings(readings, readingsUl, readings[i]);
+	displayReadings(readingsUl, readings[i]);
 });
 
 
 function addNewBPReading(e) {
 	e.preventDefault();
 
-	let newID = Date.now();
+	let addId = Date.now();
 	const systolicInput = document.querySelector('[name=systolic]');
 	const diastolicInput = document.querySelector('[name=diastolic]');
 	const pulse = document.querySelector('[name=pulse]');
@@ -32,7 +32,7 @@ function addNewBPReading(e) {
 		systolic: systolicInput.value,
 		diastolic: diastolicInput.value,
 		pulse: pulse.value,
-		id: newID,
+		id: addId,
 		date: {
 			month: month,
 			day: day,
@@ -41,18 +41,18 @@ function addNewBPReading(e) {
 		},
 	};
 	readings.push(reading);
-	displayReadings(readings, readingsUl, readings[readings.length - 1]);
+	displayReadings(readingsUl, readings[readings.length - 1]);
 	localStorage.setItem('readings', JSON.stringify(readings));
 	document.querySelector('form').reset();
 	raiseLowerForm();
-	// So the keyboard on mobile will go away after submitting
+	// removes keyboard on mobile after submitting
 	systolicInput.blur();
 }
 
-function displayReadings(pickArray = [], pickUlElement, item) {
+function displayReadings(UlElement, object) {
 	let li = document.createElement('li');
-	li.setAttribute('id', item.id);
-	pickUlElement.appendChild(li);
+	li.setAttribute('id', object.id);
+	UlElement.appendChild(li);
 
 	let readingContainer = document.createElement('div');
 	readingContainer.className = 'reading-container';
@@ -60,12 +60,12 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 
 	let bpReading = document.createElement('div');
 	bpReading.className = 'bp';
-	bpReading.textContent = `${item.systolic}/${item.diastolic}`;
+	bpReading.textContent = `${object.systolic}/${object.diastolic}`;
 	readingContainer.appendChild(bpReading);
 
 	let pulseReading = document.createElement('div');
 	pulseReading.className = 'pulse';
-	pulseReading.textContent = item.pulse;
+	pulseReading.textContent = object.pulse;
 	let heartImg = document.createElement('img');
 	heartImg.className = 'heart';
 	heartImg.src = "./img/heart.svg";
@@ -79,10 +79,10 @@ function displayReadings(pickArray = [], pickUlElement, item) {
 
 	let date = document.createElement('div');
 	date.className = 'date';
-	date.textContent = `${item.date.month} ${item.date.day}, ${item.date.year} @ ${item.date.time}`;
+	date.textContent = `${object.date.month} ${object.date.day}, ${object.date.year} @ ${object.date.time}`;
 	li.appendChild(date);
 
-	bpColorRating(item.systolic, item.diastolic, bpReading);
+	bpColorRating(object.systolic, object.diastolic, bpReading);
 }
 
 
@@ -105,7 +105,7 @@ function raiseLowerForm() {
 
 function deleteReading(e) {
 	if (e.target.classList.contains('delete-btn')) {
-		//delete from UI
+		// delete from UI
 		let li = e.target.parentElement.parentElement;
 		readingsUl.removeChild(li);
 		//delete from array
@@ -115,7 +115,7 @@ function deleteReading(e) {
 	}
 }
 
-// function called in html
+// this autotab function is called in html
 function autoTab(current, to) {
 	if (current.value.length === current.maxLength) {
 		to.focus();
