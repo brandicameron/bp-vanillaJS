@@ -29,7 +29,7 @@ body {
 	color: var(--accent-color);
 }
 
-/*  Index  */
+/*  End Helper Classes  */
 
 header {
 	background: var(--accent-color);
@@ -45,7 +45,7 @@ header {
 	color: #fff;
 	font-size: 3rem;
 	font-weight: 300;
-	animation: heartbeat .55s ease forwards .7s;
+	animation: heartbeat .55s ease forwards 1s;
 }
 
 @keyframes heartbeat {
@@ -73,11 +73,21 @@ header {
 
 .readings > li {
 	list-style: none;
-	width: 75vw;
-	max-width: 400px;
+	width: 0;
+	max-width: 0;
+	opacity: 0;
 	padding: 25px 10px;
 	border-bottom: 1px solid var(--divider-color);
 	overflow: hidden;
+	animation: grow .2s ease forwards;
+}
+
+@keyframes grow {
+	to {
+		width: 75vw;
+		max-width: 400px;
+		opacity: 1;
+	}
 }
 
 .reading-container {
@@ -130,7 +140,8 @@ header {
 form {
 	position: fixed;
 	width: 100vw;
-	height: 35vh;
+/*	height: 35vh;*/
+	height: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -140,6 +151,13 @@ form {
 	color: var(--text-color);
 	box-shadow: 0 -20px 30px -20px rgb(34 34 34 / 40%);
 	transition: all 150ms linear;
+	animation: lift .5s ease forwards .3s;
+}
+
+@keyframes lift {
+	to  {
+		height: 35vh;
+	}
 }
 
 form.active {
