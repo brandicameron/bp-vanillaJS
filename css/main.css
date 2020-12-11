@@ -144,9 +144,9 @@ header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 20px;
 	overflow-y: scroll;
 	padding-bottom: 50px;
+	margin-top: 20px;
 }
 
 .readings > li {

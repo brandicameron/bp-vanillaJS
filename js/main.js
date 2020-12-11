@@ -16,7 +16,7 @@ const db = firebase.firestore();
 //  LOGIN SECTION
 
 const loginSection = document.querySelector('.login');
-const readingsSection = document.querySelector('.readings');
+const readingsSection = document.querySelector('.readings-container');
 const loginForm = document.querySelector('.login-form');
 const loginEmail = document.getElementById('login-email');
 const loginPassword = document.getElementById('login-password');
