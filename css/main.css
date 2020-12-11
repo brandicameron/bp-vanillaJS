@@ -6,7 +6,8 @@
 
 :root {
 	--accent-color: #b40033;
-	--elevated: #ee8e05;
+	--elevated: #ef6e00;
+	--sl-elevated: #eaa200;
 	--text-color: #5e5e5e;
 	--sm-text-color: #adadad;
 	--divider-color: #d9d9d9;
@@ -19,7 +20,12 @@ body {
 	color: var(--text-color);
 }
 
-/*  Helper Classes  */
+/*  HELPER CLASSES  */
+
+
+.sl-elevated {
+	color: var(--sl-elevated);
+}
 
 .elevated {
 	color: var(--elevated);
@@ -29,7 +35,79 @@ body {
 	color: var(--accent-color);
 }
 
-/*  End Helper Classes  */
+
+/*  LOGIN SECTION  */
+
+.login {
+	display: flex;
+	flex-direction: column;
+	flex-direction: center;
+	align-items: center;
+	background: var(--accent-color);
+	height: 100vh;
+	width: 100vw;
+}
+
+h1 {
+	text-align: center;
+	font-size: 2.2rem;
+	color: white;
+	margin-top: 60px;;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	flex-direction: center;
+	align-items: center;
+}
+
+.login-form input {
+	height: 60px;
+	width: 100%;
+	max-width: 300px;
+	border-radius: 20px;
+	border: 1px solid var(--divider-color);
+	margin: 7px 0;
+	color: var(--text-color);
+	font-size: 1.2rem;
+	padding: 0 15px;
+}
+
+.login-form input::placeholder {
+	color: var(--sm-text-color);
+	font-size: 1rem;
+}
+
+.login-form input:focus,
+#login-btn:focus {
+	outline: none;
+	border: 3px solid #879aff;
+	box-shadow: 5px 5px 10px -5px rgba(0 0 0 / 30%);
+}
+
+#login-btn {
+	width: 100%;
+	max-width: 300px;
+	height: 60px;
+	border-radius: 25px;
+	border: none;
+	margin: 15px 7px;
+	background: white;
+	color: var(--accent-color);
+	font-size: 1.7rem;
+	font-weight: 700;
+	box-shadow: 5px 5px 10px -5px rgba(0 0 0 / 30%);
+	cursor: pointer;
+	transition: tranform .3s ease;
+}
+
+#login-btn:hover {
+	transform: scale(.99);
+}
+
+
+/*  BP READINGS  */
 
 header {
 	background: var(--accent-color);
@@ -137,7 +215,7 @@ header {
 
 /*  Form  */
 
-form {
+.bp-form {
 	position: fixed;
 	width: 100vw;
 /*	height: 35vh;*/
@@ -152,6 +230,7 @@ form {
 	box-shadow: 0 -20px 30px -20px rgb(34 34 34 / 40%);
 	transition: all 150ms linear;
 	animation: lift .5s ease forwards .3s;
+	z-index: 100;
 }
 
 @keyframes lift {
@@ -160,7 +239,7 @@ form {
 	}
 }
 
-form.active {
+.bp-form.active {
 	bottom: 0;
 }
 
@@ -254,4 +333,8 @@ form.active {
 	font-size: 2.2rem;
 	font-weight: 700;
 	box-shadow: 5px 5px 10px -5px rgba(0 0 0 / 30%);
+}
+
+.hide {
+	display: none;
 }
