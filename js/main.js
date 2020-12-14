@@ -115,6 +115,7 @@ function addReadingtoFb(e) {
 	})
 	raiseLowerForm();
 	sysInput.blur();
+	window.scrollTo(0,0);
 }
 
 saveBtn.addEventListener('click', addReadingtoFb);
