@@ -123,7 +123,8 @@ saveBtn.addEventListener('click', addReadingtoFb);
 function displayReadings(individualDoc) {
 	let li = document.createElement('li');
 	li.id = individualDoc.id;
-	readingsUl.appendChild(li);
+	readingsUl.insertBefore(li, readingsUl.childNodes[0]);
+//	readingsUl.appendChild(li);
 
 	let readingContainer = document.createElement('div');
 	readingContainer.className = 'reading-container';
@@ -182,6 +183,23 @@ auth.onAuthStateChanged(user => {
 		})
 	}
 })
+
+// reversed order instead by changing the li to ul append in displayReadings function
+//auth.onAuthStateChanged(user => {
+//	if (user) {
+//		db.collection(user.uid).orderBy('id', 'desc').onSnapshot((snapshot) => {
+//			let changes = snapshot.docChanges();
+//			changes.forEach(change => {
+//				if (change.type == "added") {
+//					displayReadings(change.doc);
+//				} else if (change.type == 'removed') {
+//					let li = document.getElementById(change.doc.id);
+//					readingsUl.removeChild(li);
+//				}
+//			})
+//		})
+//	}
+//})
 
 
 function bpColorRating(systolic, diastolic, display) {
