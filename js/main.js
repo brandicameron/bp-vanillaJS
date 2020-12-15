@@ -12,6 +12,12 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 
+// LOADING SCREEN
+
+window.onload = setTimeout(() => {
+	document.querySelector('.loading-screen').classList.add('hide');
+}, 500);
+
 
 //  LOGIN SECTION
 
@@ -115,7 +121,7 @@ function addReadingtoFb(e) {
 	})
 	raiseLowerForm();
 	sysInput.blur();
-	window.scrollTo(0,0);
+	window.scrollTo(0, 0);
 }
 
 saveBtn.addEventListener('click', addReadingtoFb);
@@ -125,7 +131,7 @@ function displayReadings(individualDoc) {
 	let li = document.createElement('li');
 	li.id = individualDoc.id;
 	readingsUl.insertBefore(li, readingsUl.childNodes[0]);
-//	readingsUl.appendChild(li);
+	//	readingsUl.appendChild(li);
 
 	let readingContainer = document.createElement('div');
 	readingContainer.className = 'reading-container';

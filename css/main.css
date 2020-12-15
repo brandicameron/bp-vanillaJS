@@ -36,6 +36,32 @@ body {
 }
 
 
+/*  LOADING SCREEN  */
+
+.loading-screen {
+	background: var(--accent-color);
+	background-image: url("../img/heart-banner.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 200px;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: load 2s ease infinite;
+}
+
+@keyframes load {
+	0%, 10%, 20% {
+		background-size: 200px;
+	}
+	5%, 15% {
+		background-size: 180px;
+	}
+}
+
+
 /*  LOGIN SECTION  */
 
 .login {
