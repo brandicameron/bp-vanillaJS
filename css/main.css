@@ -218,14 +218,12 @@ header {
 .bp-form {
 	position: fixed;
 	width: 100vw;
-/*	height: 35vh;*/
-	height: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background: #fff;
-	bottom: -29vh;
+	bottom: -300px;
 	color: var(--text-color);
 	box-shadow: 0 -20px 30px -20px rgb(34 34 34 / 40%);
 	transition: all 150ms linear;
@@ -235,7 +233,7 @@ header {
 
 @keyframes lift {
 	to  {
-		height: 35vh;
+		height: 350px;
 	}
 }
 
