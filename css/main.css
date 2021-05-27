@@ -168,7 +168,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
+  overflow: auto;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
   padding-bottom: 50px;
   margin-top: 20px;
 }
@@ -200,6 +202,7 @@ header {
   font-size: 2.2rem;
   padding-bottom: 3px;
   width: calc(100% + 70px);
+  scroll-snap-align: start;
   transition: transform 150ms linear;
   will-change: transform;
 }
@@ -291,7 +294,7 @@ header {
   width: 80px;
   border-radius: 50% 50% 0 0;
   background: var(--accent-color);
-  background: green;
+  background: purple;
 }
 
 .reading-inputs {
@@ -361,7 +364,7 @@ header {
 .hide {
   display: none;
 }
-
+/* 
 @media (pointer: coarse) {
   .readings {
     overflow: auto;
@@ -375,13 +378,7 @@ header {
 }
 
 @media screen and (max-width: 400px) {
-  .readings {
-    overflow: auto;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-  }
-
   .reading-container {
     scroll-snap-align: start;
   }
-}
+} */
