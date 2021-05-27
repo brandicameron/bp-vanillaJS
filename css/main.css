@@ -291,6 +291,7 @@ header {
   width: 80px;
   border-radius: 50% 50% 0 0;
   background: var(--accent-color);
+  background: green;
 }
 
 .reading-inputs {
@@ -362,6 +363,18 @@ header {
 }
 
 @media (pointer: coarse) {
+  .readings {
+    overflow: auto;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  .reading-container {
+    scroll-snap-align: start;
+  }
+}
+
+@media screen and (max-width: 400px) {
   .readings {
     overflow: auto;
     overflow-x: scroll;
