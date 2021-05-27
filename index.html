@@ -1,110 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Blood Pressure Readings</title>
-    <meta name="description" content="" />
-    <!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Brandi Cameron | hello@brandicameron.com" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta property="og:title" content="Blood Pressure Readings" />
-    <meta
-      property="og:image"
-      content="https://bc-portfolio.s3.amazonaws.com/bp-share.jpg"
-    />
-  </head>
 
-  <body>
-    <!--  LOADING SCREEN  -->
-    <!--  Prevents flash of login screen if user is logged in already  -->
+<head>
+	<meta charset="utf-8">
+	<title>Blood Pressure Readings</title>
+	<meta name="description" content="">
+	<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Brandi Cameron | hello@brandicameron.com">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#2d89ef">
+	<meta name="theme-color" content="#ffffff">
+	<meta property="og:title" content="Blood Pressure Readings" />
+	<meta property="og:image" content="https://bc-portfolio.s3.amazonaws.com/bp-share.jpg" />
+</head>
 
-    <div class="loading-screen"></div>
+<body>
 
-    <!--  LOGIN SECTION  -->
+	<!--  LOADING SCREEN  -->
+	<!--  Prevents flash of login screen if user is logged in already  -->
 
-    <section class="login">
-      <h1>Login</h1>
-      <form class="login-form">
-        <input type="email" name="email" placeholder="Email" id="login-email" />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          id="login-password"
-          autocomplete="current-password"
-        />
-        <button id="login-btn">Login</button>
-      </form>
-    </section>
+	<div class="loading-screen"></div>
 
-    <!--  BLOOD PRESSURE SECTION  -->
 
-    <main class="readings-container hide">
-      <header>History</header>
-      <ul class="readings">
-        <!--  sample to build js elements by
+	<!--  LOGIN SECTION  -->
+
+	<section class="login">
+		<h1>Login</h1>
+		<form class="login-form">
+			<input type="email" name="email" placeholder="Email" id="login-email">
+			<input type="password" name="password" placeholder="Password" id="login-password" autocomplete="current-password">
+			<button id="login-btn">Login</button>
+		</form>
+	</section>
+
+
+	<!--  BLOOD PRESSURE SECTION  -->
+
+	<main class="readings-container hide">
+		<header>History</header>
+		<ul class="readings">
+
+			<!--  sample to build js elements by
 	<li>
 		<div class="reading-container">
 			<div class="bp high">144/82</div>
 		<div class="pulse"><img src="./img/heart.svg" alt="" class="heart">71</div>
-		<img src="./img/trash-can.svg" class="delete-btn">
 		</div>
 		<div class="date">Nov 29, 2010 @ 12:55pm</div>
 	</li>
 -->
-      </ul>
-      <form class="bp-form">
-        <div class="control-bar">+</div>
-        <div class="reading-inputs">
-          <div class="input-group">
-            <label for="systolic">Systolic</label>
-            <input
-              type="tel"
-              name="systolic"
-              id="systolic"
-              maxlength="3"
-              autofocus
-              oninput="autoTab(this, diastolic)"
-            />
-          </div>
-          <div class="slash">/</div>
-          <div class="input-group">
-            <label for="diastolic">Diastolic</label>
-            <input
-              type="tel"
-              id="diastolic"
-              name="diastolic"
-              maxlength="2"
-              oninput="autoTab(this, pulse)"
-            />
-          </div>
-          <div class="input-group pulse-group">
-            <label for="pulse">Pulse</label>
-            <input type="tel" name="pulse" id="pulse" />
-          </div>
-        </div>
-        <button id="saveBtn" class="save-btn" type="submit">Save</button>
-      </form>
-    </main>
+		</ul>
+		<form class="bp-form">
+			<div class="control-bar">+</div>
+			<div class="reading-inputs">
+				<div class="input-group">
+					<label for="systolic">Systolic</label>
+					<input type="tel" name="systolic" id="systolic" maxlength="3" autofocus oninput="autoTab(this, diastolic)">
+				</div>
+				<div class="slash">/</div>
+				<div class="input-group">
+					<label for="diastolic">Diastolic</label>
+					<input type="tel" id="diastolic" name="diastolic" maxlength="2" oninput="autoTab(this, pulse)">
+				</div>
+				<div class="input-group pulse-group">
+					<label for="pulse">Pulse</label>
+					<input type="tel" name="pulse" id="pulse">
+				</div>
+			</div>
+			<button id="saveBtn" class="save-btn" type="submit">Save</button>
+		</form>
+	</main>
 
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
 </html>
