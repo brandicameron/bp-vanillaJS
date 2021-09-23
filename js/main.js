@@ -257,13 +257,15 @@ function addReadingtoFireBase(e) {
 }
 
 function checkForReadings() {
-  if (readingsUl.childElementCount == 0) {
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.no-readings').classList.remove('hide');
-  } else {
-    document.body.style.overflow = 'scroll';
-    document.querySelector('.no-readings').classList.add('hide');
-  }
+  setTimeout(() => {
+    if (readingsUl.childElementCount == 0) {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('.no-readings').classList.remove('hide');
+    } else {
+      document.body.style.overflow = 'scroll';
+      document.querySelector('.no-readings').classList.add('hide');
+    }
+  }, 1000);
 }
 
 function displayReadings(reading) {
