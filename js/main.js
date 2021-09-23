@@ -16,6 +16,7 @@ const db = firebase.firestore();
 window.onload = setTimeout(() => {
   document.querySelector('.loading-screen').classList.add('hide');
   window.scrollTo(0, 0);
+  checkForReadings();
 }, 1500);
 
 //  LOGIN
@@ -257,16 +258,15 @@ function addReadingtoFireBase(e) {
 }
 
 function checkForReadings() {
-  //setTimeout allows time for any readings to populate before showing no readings message
-  setTimeout(() => {
-    if (readingsUl.childElementCount == 0) {
+  if (readingsUl.childElementCount == 0) {
+    setTimeout(() => {
       document.body.style.overflow = 'hidden';
       document.querySelector('.no-readings').classList.remove('hide');
-    } else {
-      document.body.style.overflow = 'scroll';
-      document.querySelector('.no-readings').classList.add('hide');
-    }
-  }, 1000);
+    }, 1000);
+  } else {
+    document.body.style.overflow = 'scroll';
+    document.querySelector('.no-readings').classList.add('hide');
+  }
 }
 
 function displayReadings(reading) {

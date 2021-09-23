@@ -12,5 +12,4 @@ Stack Overflow
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5, JavaScript
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    CSS3, Sass, HTML5, JavaScript
