@@ -1,5 +1,7 @@
 # Blood Pressure Readings Tracker
 
+Including Realtime Database and Authentication with Guest Login
+
 <img src="img/bp-vid.gif" width="250" style="border-radius: 25px;"/>
 
 ---
@@ -14,16 +16,15 @@ TRY IT HERE: [https://brandicameron.github.io/bp/](https://brandicameron.github.
 
 ---
 
-I learned soooooooo many fun things coding out this little card game:
+This was my first project to include a realtime database as well as authentication, and Firebase (🙌🏻 ) made it WAY less scary than I anticipated.
 
-- The fisher-yates shuffle algorithm.
-- Local Storage
-- Javascript Modules
-- Javascript Classes
+With this project I was able to work on:
+
+- CRUD using a realtime database.
+- Authentication including a guest login option.
+- Dealing with edge cases. (e.g., incorrect password, insufficient password length on sign up, input focus that automatically jumps to the next input when entering reading data, notice that shows only if no readings have been added yet.)
+- Creating a "slide to delete" button that functions on desktop or mobile.
 - Using setTimeout.
-- How to prevent event bubbling.
-- How to make an accessible styled toggle button that can be tabbed to.
-- Built my first testing function.
 
 ---
 
@@ -31,8 +32,6 @@ I learned soooooooo many fun things coding out this little card game:
 
 ---
 
-Logo was created in Illustrator using monster vector graphics from [www.freepick.com](https://www.freepik.com/free-vector/monster-character-set_1538770.htm#page=1&query=monsters&position=28)
+Heart and account icons from [www.thenounproject.com](https://thenounproject.com/)
 
 <p style="text-align: center;">--------------------------------</p>
-
-Discovered the fisher-yates shuffle from this [stackoverflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) post, which has been useful in other projects as well. (check out this [US Map Quiz](https://brandicameron.github.io/us-map-quiz/)!) 😃
