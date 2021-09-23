@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<title>Blood Pressure Readings</title>
 	<meta name="description" content="">
-	<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Brandi Cameron | hello@brandicameron.com">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/styles.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -21,7 +21,7 @@
 	<meta name="msapplication-TileColor" content="#2d89ef">
 	<meta name="theme-color" content="#ffffff">
 	<meta property="og:title" content="Blood Pressure Readings" />
-	<meta property="og:image" content="https://bc-portfolio.s3.amazonaws.com/bp-share.jpg" />
+	<meta property="og:image" content="./img/share.gif" />
 </head>
 
 <body>
@@ -29,57 +29,90 @@
 	<!--  LOADING SCREEN  -->
 	<!--  Prevents flash of login screen if user is logged in already  -->
 
-	<div class="loading-screen"></div>
-
+	<div class="loading-screen">
+		<div class="loading-graphic"></div>
+	</div>
 
 	<!--  LOGIN SECTION  -->
 
-	<section class="login">
-		<h1>Login</h1>
-		<form class="login-form">
-			<input type="email" name="email" placeholder="Email" id="login-email">
-			<input type="password" name="password" placeholder="Password" id="login-password" autocomplete="current-password">
-			<button id="login-btn">Login</button>
-		</form>
+	<section class="login-section">
+		<div class="login-form-container">
+			<h1 class="form-title">Login</h1>
+			<div class="slide-controls">
+				<label for="login" class="slide login">Login</label>
+				<input class="slide" type="radio" name="slide" id="login" checked>
+				<label for="signup" class="slide signup">Signup</label>
+				<input class="slide" type="radio" name="slide" id="signup">
+				<div class="slider-tab"></div>
+			</div>
+			<form class="login-form">
+				<input class="form-input" id="login-email" type="email" placeholder="Email Address" required>
+				<input class="form-input" id="login-password" type="password" placeholder="Password" required>
+				<div class="login-incorrect" hidden>Your username or password is incorrect.</div>
+				<a class="forgot-password" id="forgot-password" href="#">Forgot password?</a>
+				<input class="button login-btn" id="login-btn" type="submit" value="Login">
+				<div class="or">or</div>
+				<input class="button guest-btn" id="guest-btn" type="button" value="Enter as Guest">
+			</form>
+			<form class="signup-form" hidden>
+				<input class="form-input signup-email" type="email" id="signup-email" placeholder="Email Address" required>
+				<input class="form-input" type="password" id="signup-password" placeholder="Create Password" required>
+				<small class="password-length-warning"></small>
+				<input class="button signup-btn" id="signup-btn" type="submit" value="Signup">
+			</form>
+		</div>
 	</section>
 
-
-	<!--  BLOOD PRESSURE SECTION  -->
+	<!--  DISPLAY READINGS SECTION  -->
 
 	<main class="readings-container hide">
-		<header>History</header>
-		<ul class="readings">
+		<header>
+			<nav class="main-nav">
+				<a href="index.html"><img src="img/heart.svg" width="30" height="30" alt="Logo, click to go home."
+						class="logo"></a>
+				<h1 class="header-title">Blood Pressure Readings</h1>
+				<button class="account" aria-label="Account Information"></button>
+				<button class="logout-btn">Logout</button>
+			</nav>
+		</header>
 
-			<!--  sample to build js elements by
-	<li>
-		<div class="reading-container">
-			<div class="bp high">144/82</div>
-		<div class="pulse"><img src="./img/heart.svg" alt="" class="heart">71</div>
-		</div>
-		<div class="date">Nov 29, 2010 @ 12:55pm</div>
-	</li>
--->
-		</ul>
-		<form class="bp-form">
-			<div class="control-bar">+</div>
-			<div class="reading-inputs">
-				<div class="input-group">
-					<label for="systolic">Systolic</label>
-					<input type="tel" name="systolic" id="systolic" maxlength="3" autofocus oninput="autoTab(this, diastolic)">
-				</div>
-				<div class="slash">/</div>
-				<div class="input-group">
-					<label for="diastolic">Diastolic</label>
-					<input type="tel" id="diastolic" name="diastolic" maxlength="2" oninput="autoTab(this, pulse)">
-				</div>
-				<div class="input-group pulse-group">
-					<label for="pulse">Pulse</label>
-					<input type="tel" name="pulse" id="pulse">
-				</div>
-			</div>
-			<button id="saveBtn" class="save-btn" type="submit">Save</button>
-		</form>
+		<h2 class="no-readings hide">Add Your First Reading</h2>
+
+		<ul class="readings"></ul>
 	</main>
+
+	<!--  ADD NEW READING FORM  -->
+
+	<form class="add-reading-form">
+		<div class="control-bar" tabindex="0" aria-label="Add a new reading.">+</div>
+		<div class="reading-inputs">
+			<div class="input-group">
+				<label for="systolic">Systolic</label>
+				<input type="tel" name="systolic" id="systolic" maxlength="3" oninput="autoTab(this, diastolic)">
+			</div>
+			<div class="slash">/</div>
+			<div class="input-group">
+				<label for="diastolic">Diastolic</label>
+				<input type="tel" id="diastolic" name="diastolic" maxlength="2" oninput="autoTab(this, pulse)">
+			</div>
+			<div class="input-group pulse-group">
+				<label for="pulse">Pulse</label>
+				<input type="tel" name="pulse" id="pulse">
+			</div>
+		</div>
+		<button id="saveBtn" class="save-btn" type="submit">Save</button>
+	</form>
+
+	<!--  HYPERTENSIVE CRISIS MODULE  -->
+
+	<div class="danger-modal">
+		<button class="close-btn">X</button>
+		<p>Your blood pressure reading of</p>
+		<p class="latest-reading danger-text">180/120</p>
+		<p>indicates a</p>
+		<p class="danger-text">Hypertensive Crisis.</p>
+		<p class="outline-text">Please call your doctor or dial 911 immediately.</p>
+	</div>
 
 	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>

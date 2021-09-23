@@ -1,0 +1,39 @@
+.loading-screen {
+  position: fixed;
+  @extend .flex;
+  background: $accent-color;
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  font-size: clamp(1.5rem, 2.5vw, 4rem);
+  text-align: center;
+  z-index: 102;
+}
+
+.loading-graphic {
+  width: 300px;
+  height: 300px;
+  background-image: url('../img/heart-banner.svg');
+  background-repeat: no-repeat;
+  background-size: 300px;
+  background-position: center;
+  animation: heartbeat 2s ease 700ms infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  10%,
+  20% {
+    background-size: 300px;
+  }
+  5%,
+  15% {
+    background-size: 280px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .loading-graphic {
+    margin-top: -120px;
+  }
+}

@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// $gradient: linear-gradient(to right, #b40033, #ce0045);
+$background-color: #f5efef;
+$gradient: linear-gradient(70deg, #ae1216 0%, #e00101 95%);
+$accent-color: #ae1216;
+$focus-color: #1a75ff;
+$white: #fff;
+$elevated: #ef6e00;
+$sl-elevated: #eaa200;
+$text-color: #5e5e5e;
+$sm-text-color: #9c9c9c;
+$text-shadow: 0px 1px 1px #fff, 0 0 0 #000, 0px 1px 1px #fff;
+$light-grey: #d9d9d9;
+$radius: 7px;
+$bold: 800;
+
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Mukta', sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+button,
+a {
+  outline: none;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid $focus-color;
+  padding: 5px;
+}
+
+p {
+  color: $text-color;
+  font-size: 1.3rem;
+}
+
+/*  HELPER CLASSES  */
+
+.hide {
+  display: none;
+}
+
+.sl-elevated {
+  color: $sl-elevated;
+}
+
+.elevated {
+  color: $elevated;
+}
+
+.high {
+  color: $accent-color;
+}
+
+.danger {
+  background-color: $accent-color;
+  color: $white;
+  padding: 3px 5px;
+  border-radius: $radius;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  MIXINS  */
+
+@mixin phone-media-query {
+  @media screen and (max-width: 400px) {
+    @content;
+  }
+}

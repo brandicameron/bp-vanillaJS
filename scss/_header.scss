@@ -1,0 +1,62 @@
+.main-nav {
+  @extend .flex;
+  width: 90vw;
+  height: 90px;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.header-title {
+  font-size: clamp(1.7rem, 2.3vw, 2.5rem);
+  text-align: center;
+  line-height: 100%;
+  font-weight: $bold;
+  color: $accent-color;
+  text-shadow: $text-shadow;
+}
+
+.account {
+  background-color: $background-color;
+  background-image: url(../img/account.svg);
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  outline: none;
+  border: none;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: none;
+  border: none;
+  width: 85vw;
+  height: 75px;
+  background: $accent-color;
+  color: $white;
+  font-size: 2rem;
+  border-radius: 0 $radius $radius 0;
+  transform: translateX(-100vw);
+}
+
+.slide-right {
+  animation: slide-right 250ms ease forwards;
+}
+
+.logout-btn:focus-within {
+  transform: translateX(-100vw);
+}
+
+@keyframes slide-right {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logout-btn {
+    width: 80vw;
+  }
+}

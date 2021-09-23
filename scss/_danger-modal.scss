@@ -1,0 +1,61 @@
+.danger-modal {
+  position: absolute;
+  @extend .flex;
+  flex-direction: column;
+  top: 45%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 85vw;
+  height: 80vh;
+  padding: 40px;
+  background-color: $white;
+  border: 10px solid $accent-color;
+  border-radius: $radius;
+  text-align: center;
+  box-shadow: 15px 20px 50px -20px rgba(34, 34, 3, 0.7);
+  visibility: hidden;
+}
+
+.close-btn {
+  position: absolute;
+  @extend .flex;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  border: 6px solid $accent-color;
+  border-radius: 50%;
+  background-color: $white;
+  color: $accent-color;
+  font-size: 1.4rem;
+  font-weight: $bold;
+}
+
+.danger-text {
+  color: $accent-color;
+  font-size: 2.7rem;
+  font-weight: $bold;
+  line-height: 100%;
+  margin: 15px 0;
+}
+
+.outline-text {
+  border: 6px solid $accent-color;
+  border-radius: $radius;
+  padding: 10px 20px;
+  margin-top: 20px;
+  max-width: 300px;
+  box-shadow: 15px 20px 50px -20px rgba(34, 34, 3, 0.7);
+}
+
+@include phone-media-query {
+  .danger-modal {
+    height: 65%;
+    top: 40%;
+  }
+
+  .danger-text {
+    margin: 7px 0;
+  }
+}
