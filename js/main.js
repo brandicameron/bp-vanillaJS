@@ -257,6 +257,7 @@ function addReadingtoFireBase(e) {
 }
 
 function checkForReadings() {
+  //setTimeout allows time for any readings to populate before showing no readings message
   setTimeout(() => {
     if (readingsUl.childElementCount == 0) {
       document.body.style.overflow = 'hidden';
