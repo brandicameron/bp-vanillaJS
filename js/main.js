@@ -327,9 +327,9 @@ function bpColorRating(systolic, diastolic, display) {
 }
 
 function deleteReading() {
-  let deleteBtns = document.querySelectorAll('.delete-btn');
-  deleteBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+  let readingContainer = document.querySelector('.reading-container');
+  readingContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
       console.log('clicked!');
       let id = e.target.parentElement.parentElement.id;
       let item = e.target.parentElement.parentElement;
@@ -347,7 +347,7 @@ function deleteReading() {
           }
         });
       }, 400);
-    });
+    }
   });
 }
 
