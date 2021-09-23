@@ -10,8 +10,8 @@ $gradient: linear-gradient(70deg, #ae1216 0%, #e00101 95%);
 $accent-color: #ae1216;
 $focus-color: #196ff1;
 $white: #fff;
-$elevated: #ef6e00;
-$sl-elevated: #d39200;
+$ht-stage-1: #ef6e00;
+$elevated: #d39200;
 $text-color: #5e5e5e;
 $sm-text-color: #9c9c9c;
 $text-shadow: 0px 1px 1px #fff, 0 0 0 #000, 0px 1px 1px #fff;
@@ -44,17 +44,21 @@ p {
   font-size: 1.3rem;
 }
 
-/*  HELPER CLASSES  */
-
-.sl-elevated {
-  color: $sl-elevated;
+li {
+  list-style: none;
 }
+
+/*  HELPER CLASSES  */
 
 .elevated {
   color: $elevated;
 }
 
-.high {
+.ht-stage-1 {
+  color: $ht-stage-1;
+}
+
+.ht-stage-2 {
   color: $accent-color;
 }
 

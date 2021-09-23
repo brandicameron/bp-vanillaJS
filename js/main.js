@@ -318,11 +318,11 @@ function bpColorRating(systolic, diastolic, display) {
     display.classList.add('danger');
     showDangerModal();
   } else if (systolic >= 140 || diastolic >= 90) {
-    display.classList.add('high');
+    display.classList.add('ht-stage-2');
   } else if (systolic >= 130 || diastolic >= 80) {
-    display.classList.add('elevated');
+    display.classList.add('ht-stage-1');
   } else if (systolic >= 120 || diastolic >= 80) {
-    display.classList.add('sl-elevated');
+    display.classList.add('elevated');
   }
 }
 
