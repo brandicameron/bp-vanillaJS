@@ -1,22 +1,24 @@
 .no-readings {
-  position: relative;
-  @extend .flex;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   color: $accent-color;
   font-size: 2.5rem;
   width: 250px;
-  height: 60vh;
   text-align: center;
-  margin: 0 auto;
 }
 
 .no-readings::after {
   content: '';
-  position: absolute;
+  display: block;
+  margin: 0 auto;
   width: 50px;
   height: 70px;
   background-image: url(../img/arrow.svg);
   background-repeat: no-repeat;
-  margin-top: 200px;
+  margin-top: 15px;
 }
 
 .readings {
@@ -113,13 +115,5 @@
   .delete-btn {
     width: 70px;
     background-size: 35%;
-  }
-
-  .no-readings {
-    height: 50vh;
-  }
-
-  .no-readings::after {
-    margin-top: 100px;
   }
 }
