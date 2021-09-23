@@ -1,6 +1,6 @@
 # Blood Pressure Readings Tracker
 
-![Demo](img/mm.gif)
+<img src="img/bp-vid.gif" width="250" style="border-radius: 25px;"/>
 
 ---
 

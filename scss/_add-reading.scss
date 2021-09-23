@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.control-bar:focus {
+  outline: none;
+}
+
 .control-bar:focus-visible {
   outline: 3px solid $focus-color;
   border: 3px solid $focus-color;
@@ -82,7 +86,7 @@
   text-align: center;
 }
 
-.add-reading-input:focus-visible {
+.add-reading-input:focus {
   outline: none;
   border: 2px solid $accent-color;
   border-radius: $radius;
