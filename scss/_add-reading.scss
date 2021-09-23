@@ -3,7 +3,6 @@
   @extend .flex;
   flex-direction: column;
   width: 100vw;
-  background: $background-color;
   background: $accent-color;
   bottom: -290px;
   color: $text-color;
@@ -47,8 +46,7 @@
 
 .reading-inputs {
   position: relative;
-  display: flex;
-  align-items: center;
+  @extend .flex;
 }
 
 .input-group {
@@ -71,7 +69,7 @@
   color: $white;
 }
 
-.reading-inputs input {
+.add-reading-input {
   height: 60px;
   width: 23vw;
   max-width: 95px;
@@ -84,7 +82,7 @@
   text-align: center;
 }
 
-.reading-inputs input:focus {
+.add-reading-input:focus-visible {
   outline: none;
   border: 2px solid $accent-color;
   border-radius: $radius;

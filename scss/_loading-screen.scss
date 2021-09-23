@@ -1,7 +1,7 @@
 .loading-screen {
   position: fixed;
   @extend .flex;
-  background: $accent-color;
+  background: $gradient;
   width: 100vw;
   height: 100vh;
   color: #fff;

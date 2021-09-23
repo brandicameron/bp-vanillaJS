@@ -49,6 +49,13 @@
   box-shadow: 15px 20px 50px -20px rgba(34, 34, 3, 0.7);
 }
 
+.danger {
+  background-color: $accent-color;
+  color: $white;
+  padding: 3px 5px;
+  border-radius: $radius;
+}
+
 @include phone-media-query {
   .danger-modal {
     height: 65%;

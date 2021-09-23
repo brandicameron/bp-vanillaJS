@@ -22,7 +22,6 @@ $bold: 800;
 body {
   position: relative;
   min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
   font-family: 'Mukta', sans-serif;
   color: $text-color;
   background-color: $background-color;
@@ -61,13 +60,6 @@ p {
 
 .high {
   color: $accent-color;
-}
-
-.danger {
-  background-color: $accent-color;
-  color: $white;
-  padding: 3px 5px;
-  border-radius: $radius;
 }
 
 .flex {
