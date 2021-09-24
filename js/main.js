@@ -140,7 +140,6 @@ function showUserReadings() {
   document.title = 'Blood Pressure Readings';
   loginSection.classList.add('hide');
   readingsSection.classList.remove('hide');
-  checkForReadings();
 }
 
 function showLoginPage() {
