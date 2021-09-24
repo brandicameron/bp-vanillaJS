@@ -2,7 +2,7 @@
   @extend .flex;
   width: 325px;
   margin: 0 auto 30px auto;
-  padding: 10px 0;
+  padding: 5px 0 10px 0;
   border-top: 1px dotted $light-grey;
   border-bottom: 1px dotted $light-grey;
 }
@@ -16,6 +16,6 @@
 }
 
 .rating-color {
-  font-size: 3.5rem;
-  line-height: 50%;
+  font-size: 3rem;
+  line-height: 60%;
 }
