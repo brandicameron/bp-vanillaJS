@@ -11,13 +11,35 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// LOADING SCREEN
+//prevents showing the add new reading message if browser is simply refreshed
+window.onload = () => {
+  setTimeout(() => {
+    checkForReadings('onload');
+  }, 1500);
+};
 
-window.onload = setTimeout(() => {
-  document.querySelector('.loading-screen').classList.add('hide');
-  window.scrollTo(0, 0);
-  checkForReadings();
-}, 1500);
+// Hide/display login page
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    let userEmail = firebase.auth().currentUser.email;
+    if (userEmail == null) {
+      userEmail = 'Guest User';
+    }
+    console.log(`Hello, ${userEmail}.`);
+    setTimeout(() => {
+      document.querySelector('.loading-screen').classList.add('hide');
+    }, 1000);
+
+    window.scrollTo(0, 0);
+    showUserReadings();
+  } else {
+    console.log('Please sign in.');
+    setTimeout(() => {
+      document.querySelector('.loading-screen').classList.add('hide');
+    }, 1000);
+    showLoginPage();
+  }
+});
 
 //  LOGIN
 
@@ -59,6 +81,8 @@ function loginUser(e) {
     .signInWithEmailAndPassword(email, password)
     .then(() => {
       showUserReadings();
+      document.querySelector('.loading-screen').classList.add('hide');
+      window.scrollTo(0, 0);
     })
     .catch((err) => {
       let incorrectLogin = document.querySelector('.login-incorrect');
@@ -71,6 +95,7 @@ function guestSignIn() {
     .signInAnonymously()
     .then(() => {
       showUserReadings();
+      checkForReadings('guest sign in');
     })
     .catch((err) => {
       console.log('Guest Enter Error Occured');
@@ -97,6 +122,7 @@ function signUpUser(e) {
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
       showUserReadings();
+      checkForReadings('sign up');
     })
     .catch((err) => {
       console.log('SignUp Error Occured');
@@ -147,21 +173,6 @@ function showLoginPage() {
   loginSection.classList.remove('hide');
   readingsSection.classList.add('hide');
 }
-
-// Hide/display login page
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    let userEmail = firebase.auth().currentUser.email;
-    if (userEmail == null) {
-      userEmail = 'Guest User';
-    }
-    console.log(`Hello, ${userEmail}.`);
-    showUserReadings();
-  } else {
-    console.log('Please sign in.');
-    showLoginPage();
-  }
-});
 
 // Login event listeners
 const loginFormContainer = document.querySelector('.login-form-container');
@@ -258,10 +269,8 @@ function addReadingtoFireBase(e) {
 
 function checkForReadings() {
   if (readingsUl.childElementCount == 0) {
-    setTimeout(() => {
-      document.body.style.overflow = 'hidden';
-      document.querySelector('.no-readings').classList.remove('hide');
-    }, 1000);
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.no-readings').classList.remove('hide');
   } else {
     document.body.style.overflow = 'scroll';
     document.querySelector('.no-readings').classList.add('hide');
@@ -329,7 +338,6 @@ function deleteReading() {
   let readingContainer = document.querySelector('.reading-container');
   readingContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
-      console.log('clicked!');
       let id = e.target.parentElement.parentElement.id;
       let item = e.target.parentElement.parentElement;
       item.classList.add('delete-slideaway');
@@ -358,12 +366,12 @@ auth.onAuthStateChanged((user) => {
       changes.forEach((change) => {
         if (change.type == 'added') {
           displayReadings(change.doc);
-          checkForReadings();
+          checkForReadings('realtime listener - added');
           deleteReading();
         } else if (change.type == 'removed') {
           let li = document.getElementById(change.doc.id);
           readingsUl.removeChild(li);
-          checkForReadings();
+          checkForReadings('realtime listener - removed');
         }
       });
     });

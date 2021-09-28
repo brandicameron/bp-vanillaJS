@@ -68,6 +68,14 @@ li {
   align-items: center;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 /*  MIXINS  */
 
 @mixin phone-media-query {
